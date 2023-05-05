@@ -6,7 +6,7 @@ Aqui será desenvolvido várias versões do jogo chamado "Wunpus". Esse jogo é 
    * O caçador pode perceber sensações que o ambiente emana;
    * O caçador pode pegar o ouro;
 2. **Wumpus:**
-   * O wumpus ensala fedor nas casas adjacentes a sua;
+   * O wumpus exala fedor nas casas adjacentes a sua;
    * O Wumpuns mata o caçador, caso esse entre em sua casa com ele vivo;
 3. **Ouro:**
    * Brilha, seu brilho é sentido pelo caçado apenas na casa que está o ouro.

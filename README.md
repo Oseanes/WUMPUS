@@ -20,13 +20,15 @@ Nessa etapa do jogo os agentes não possuiem memória, não faz nenhum tipo de i
   + Pegar ouro;
   + Matar Wumpus
   + Etc.
-    **OBSERVAÇÃO:**
-      Os números na matrix corresponde ao respectivos agente:
-        > 1 - Caçador;
-        > 2 - Wumpus;
-        > 3 - Ouro;
-        > 4 - Buraco.
-  ![Wumpus - reativo](img/Wumpus-reativo.GIF)
+  
+
+**### OBSERVAÇÃO:**
+Os números na matrix corresponde ao respectivos agente:
+    * 1 - Caçador;
+    * 2 - Wumpus;
+    * 3 - Ouro;
+    * 4 - Buraco.
+![Wumpus - reativo](img/Wumpus-reativo.GIF)
   
   
   

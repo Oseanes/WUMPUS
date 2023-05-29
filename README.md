@@ -30,7 +30,9 @@ Os números na matrix corresponde ao respectivos agente:
   * 3 - Ouro;
   * 4 - Buraco.
   
-![Wumpus - reativo](img/Wumpus-reativo.GIF)
+![Wumpus - reativo](Docs/Wumpus-reativo.GIF)
+
+![Descrição breve do projeto] (Docs/Breve_relatorio_Proj_Wumpus.pdf)
   
   
   

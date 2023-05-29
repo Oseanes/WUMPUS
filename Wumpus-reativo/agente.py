@@ -1,18 +1,18 @@
-import numpy as np
+#import numpy as np
 
 
 class Agente:
     """ Cria objeto com todos os agentes e fornece os métodos."""
 
     def __init__(self, tamanho):
-        self.tamanho = tamanho
-        self.matriz = np.zeros((self.tamanho, self.tamanho), dtype=np.int64)
+        #self.tamanho = tamanho
+        #self.matriz = np.zeros((self.tamanho, self.tamanho), dtype=np.int64)
         self.posicoes_agentes = self.gerar_posicao_agentes()
-        self.posicao_cacador = self.cacador((0, 0))
+        #self.posicao_cacador = self.cacador((0, 0))
         self.quant_wumpus = 0
         self.quant_ouro = 0
         self.quant_buraco = 0
-        self.flecha = True
+        #self.flecha = True
 
     def wumpus(self):
         """ Posiciona o WUMPUS na matrix"""

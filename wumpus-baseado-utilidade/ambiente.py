@@ -12,6 +12,7 @@ class Ambiente:
         self.tamanho_matrix = tamanho
         self.matriz = self.posicionar_na_matriz(quant_wumpus=1, quant_ouro=1, quant_buraco=3)
         self.casa_anterior = (0, 0)
+        self.jogo_on = True
 
     def posicionar_na_matriz(self, quant_wumpus, quant_ouro, quant_buraco):
         """ Posiciona os agentes na Matriz"""
@@ -52,9 +53,9 @@ class Ambiente:
             self.casa_anterior = p_cacador
             objeto = self.matriz[nova_posicao]
             cacador = self.matriz[p_cacador]
+            cacador.passos += 1
             # verifica se o caçador morre
             if objeto.sensacao == 'brisa' or objeto.sensacao == 'fedor':
-                print("objeto.sensacao", objeto.sensacao)
                 cacador.vivo = False
             elif objeto.sensacao == 'brilho':
                 cacador.pontuacao += 50

@@ -11,6 +11,7 @@ class Cacador:
         self.vivo = True
         self.ouro_coletado = False
         self.wumpus_morto = False
+        self.passos = 0
 
     def nova_posicao(self, p_cacador):
         self.posicao = p_cacador

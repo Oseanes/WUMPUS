@@ -74,15 +74,22 @@ def posicao_(l_casas_perigosas, l_casas_seguras, l_casas_percorridas, d_historic
         else:
             return casas_possiveis[0]
     else:
-        casas_possiveis = [item for item in casas_adjacentes_cacador if item not in l_casas_perigosas]
-        if bool(casas_possiveis):
-            casas_possiveis = [item for item in casas_possiveis if item in l_casas_seguras]
+        casas_possiveis_ = [item for item in casas_adjacentes_cacador if item not in l_casas_perigosas]
+        casas_possiveis = casas_possiveis_
         if bool(casas_possiveis):
             casas_possiveis = [item for item in casas_possiveis if item not in l_casas_percorridas]
-
+        if bool(casas_possiveis):
+            casas_possiveis = [item for item in casas_possiveis if item in l_casas_seguras]
         if bool(casas_possiveis) is False:
-            posicao_casador = cacador.posicao
-            voltar_pos_anterior(posicao_casador, d_historico)
+            # A casa 5 passos faz uma escolha aleatória
+            if cacador.passos > tamanho_matriz:
+                cacador.passos = 0
+                #print("----------------------------------")
+                i = random.randint(0, len(casas_possiveis_))
+                return casas_possiveis_[i]
+            else:
+                voltar_pos_anterior(cacador.posicao, d_historico)
+
         else:
             if len(casas_possiveis) > 1:
                 i = random.randint(0, len(casas_possiveis))
@@ -141,7 +148,25 @@ def inferir(l_casas_percorridas, d_historico):
             cacador.casa_com_buraco.add(casa_perigosa)
 
 
-tamanho_matriz = 4
+def voltar_caminho_curto(casas_percorrida):
+    posicao_obj_concluido = cacador.posicao
+    linha_cacador = posicao_obj_concluido[1]
+    coluna_cacador = posicao_obj_concluido[0]
+    posicao_voltar = []
+    for posicao in casas_percorrida:
+        linha1 = posicao[1]
+        coluna2 = posicao[0]
+        if linha_cacador >= linha1 and coluna_cacador >= coluna2:
+            if posicao in cacador.posicao_adjacente(tamanho_matriz):
+                posicao_voltar.append(posicao)
+                jogo.mover(cacador.posicao, posicao)
+                print()
+                print(jogo.print_matrix())
+    print("lista casa voltar:", posicao_voltar)
+    jogo.jogo_on = False
+
+
+tamanho_matriz = 6
 jogo = Ambiente(tamanho_matriz)
 matriz = jogo.matriz
 cacador = matriz[(0, 0)]
@@ -151,14 +176,18 @@ casas_perigosa = cacador.casa_com_buraco
 casas_seguras = set()
 casas_percorridas = cacador.casas_percorridas
 
-while cacador.vivo:
+while cacador.vivo and jogo.jogo_on:
+    print(jogo.print_matrix())
+    print()
+
     percepcoes_atuais = perceber_ambiente()
     casa_anterior = jogo.casa_anterior
     if cacador.ouro_coletado and cacador.wumpus_morto:
         print("Valeu Paixe!\n Pontuação:", cacador.pontuacao)
-        break
+        casas_percorridas = sorted(list(casas_percorridas), key=tuple, reverse=True)
+        voltar_caminho_curto(casas_percorridas)
     if cacador.posicao_anterior is None:
-        print(jogo.print_matrix())
+        #print(jogo.print_matrix())
         cacador.casas_percorridas.add(cacador.posicao)
         cacador.posicao_anterior = cacador.posicao
         upload_historico(pos_anterior=casa_anterior,
@@ -195,6 +224,5 @@ while cacador.vivo:
                                     d_historico=historico)
             jogo.mover(p_cacador=cacador.posicao,
                        nova_posicao=nova_posicao)
-    print()
-    print(jogo.print_matrix())
+
 

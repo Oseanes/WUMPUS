@@ -32,7 +32,7 @@ Os números na matrix corresponde ao respectivos agente:
   
 ![Wumpus - reativo](Docs/Wumpus-reativo.GIF)
 
-![Descrição breve do projeto](Docs/Breve_relatorio_Proj_Wumpus.pdf)
+[Descrição breve do projeto](Docs/Breve_relatorio_Proj_Wumpus.pdf)
   
   
   
